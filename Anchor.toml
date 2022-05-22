@@ -1,0 +1,14 @@
+[features]
+seeds = false
+[programs.localnet]
+solana_fullstack = "9WinRJW2vb2zhnP6XuGcKy7U2A8rRJoyZQzRja2Ru3xU"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "localnet"
+wallet = "/Users/trannguyen/.config/solana/id.json"
+
+[scripts]
+test = "yarn run mocha -t 1000000 tests/"
