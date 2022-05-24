@@ -7,6 +7,7 @@ export const Signup = ({ signup }) => {
 
   const signUpClicked = () => {
     signup(username, profile)
+    console.log("Success")
   }
 
   return (

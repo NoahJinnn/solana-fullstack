@@ -10,7 +10,6 @@ import {
   
   const WalletConnectionProvider = ({ children }) => {
     const endpoint = useMemo(() => SOLANA_HOST, [])
-  
     const wallets = useMemo(() => [new PhantomWalletAdapter()], [])
   
     return (

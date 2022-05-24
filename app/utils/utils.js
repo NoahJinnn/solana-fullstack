@@ -1,6 +1,7 @@
 import * as anchor from '@project-serum/anchor';
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
-import { TIKTOK_IDL, TIKTOK_PROGRAM_ID } from './const';
+import { TIKTOK_PROGRAM_ID } from './const';
+import idl from './idl.json';
 
 // This command makes an Lottery
 export function getProgramInstance(
@@ -14,8 +15,6 @@ export function getProgramInstance(
     wallet,
     anchor.AnchorProvider.defaultOptions(),
   );
-  // Read the generated IDL.
-  const idl = TIKTOK_IDL;
 
   // Address of the deployed program.
   const programId = TIKTOK_PROGRAM_ID;

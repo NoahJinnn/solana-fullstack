@@ -1,68 +1,185 @@
 {
-    "version": "0.1.0",
-    "name": "solana_fullstack",
-    "instructions": [
-      {
-        "name": "createUser",
-        "accounts": [
+  "version": "0.1.0",
+  "name": "solana_fullstack",
+  "instructions": [
+    {
+      "name": "createUser",
+      "accounts": [
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "profileUrl",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "createVideo",
+      "accounts": [
+        {
+          "name": "video",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "videoUrl",
+          "type": "string"
+        },
+        {
+          "name": "creatorName",
+          "type": "string"
+        },
+        {
+          "name": "creatorUrl",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "UserAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            "name": "user",
-            "isMut": true,
-            "isSigner": false
-          },
-          {
-            "name": "authority",
-            "isMut": true,
-            "isSigner": true
-          },
-          {
-            "name": "systemProgram",
-            "isMut": false,
-            "isSigner": false
-          },
-          {
-            "name": "tokenProgram",
-            "isMut": false,
-            "isSigner": false
-          },
-          {
-            "name": "clock",
-            "isMut": false,
-            "isSigner": false
-          }
-        ],
-        "args": [
-          {
-            "name": "name",
+            "name": "userName",
             "type": "string"
           },
           {
-            "name": "profileUrl",
+            "name": "userWalletAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "userProfileImageUrl",
             "type": "string"
           }
         ]
       }
-    ],
-    "accounts": [
-      {
-        "name": "UserAccount",
-        "type": {
-          "kind": "struct",
-          "fields": [
-            {
-              "name": "userName",
-              "type": "string"
-            },
-            {
-              "name": "userWalletAddress",
-              "type": "publicKey"
-            },
-            {
-              "name": "userProfileImageUrl",
-              "type": "string"
+    },
+    {
+      "name": "VideoAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "videoUrl",
+            "type": "string"
+          },
+          {
+            "name": "creatorName",
+            "type": "string"
+          },
+          {
+            "name": "creatorUrl",
+            "type": "string"
+          },
+          {
+            "name": "commentCount",
+            "type": "u64"
+          },
+          {
+            "name": "index",
+            "type": "u64"
+          },
+          {
+            "name": "creatorTime",
+            "type": "i64"
+          },
+          {
+            "name": "peopleWhoLiked",
+            "type": {
+              "vec": "publicKey"
             }
-          ]
-        }
+          },
+          {
+            "name": "likes",
+            "type": "u8"
+          },
+          {
+            "name": "remove",
+            "type": "i64"
+          }
+        ]
       }
-    ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "CannotCreateUser",
+      "msg": "User cannot be created, missing data"
+    },
+    {
+      "code": 6001,
+      "name": "CannotCreateVideo",
+      "msg": "Video cannot be created, missing data"
+    }
+  ],
+  "metadata": {
+    "address": "9WinRJW2vb2zhnP6XuGcKy7U2A8rRJoyZQzRja2Ru3xU"
   }
+}
