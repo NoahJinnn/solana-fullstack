@@ -1,6 +1,7 @@
 import { useWallet } from '@solana/wallet-adapter-react'
 import { SOLANA_HOST } from '../utils/const'
 import { getProgramInstance } from '../utils/utils'
+import axios from 'axios'
 import defaultAccounts from './defaultAccounts'
 const anchor = require('@project-serum/anchor')
 const utf8 = anchor.utils.bytes.utf8
@@ -23,12 +24,12 @@ const useTiktok = (
     const videos = await program.account.videoAccount.all()
     console.log(videos)
 
-    // const res = await axios.get(
-    //   'https://ipfs.io/ipfs/QmS28E89P3Gz2LZimkKSuJgXGuZEtXG6dhyzxkSbpv6mKU/tiktoks.json',
-    // )
-    // setTikToks(res.data);
+    const res = await axios.get(
+      'https://ipfs.io/ipfs/QmS28E89P3Gz2LZimkKSuJgXGuZEtXG6dhyzxkSbpv6mKU/tiktoks.json',
+    )
+    setTikToks(res.data);
 
-    setTikToks(videos)
+    // setTikToks(videos)
   }
 
   const likeVideo = async index => {
